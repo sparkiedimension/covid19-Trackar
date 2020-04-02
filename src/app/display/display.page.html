@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar color="primary ">
+  <ion-title  >CoronaVirus in {{isState?"India":"World"}}</ion-title>
+    
+  </ion-toolbar>
+  <ion-segment class="ion-size-lg" color="secondary" value="global" (ionChange)="segmentChange($event)">
+    <ion-segment-button style="height: 25px; font-size: 18px" value="global">GlobalCases</ion-segment-button>
+    <ion-segment-button style="height: 25px; font-size:18px" value="india">IndianCases</ion-segment-button>
+  </ion-segment>
+
+
+
+  <ion-grid>
+    <ion-row >  
+      <ion-col class="ion-no-margin ion-text-center">
+
+          <ion-card class="ion-no-margin ion-padding" color="warning">
+            <ion-header>
+              
+              <ion-card-subtitle>total Cases</ion-card-subtitle>
+              <ion-card-content>
+                  {{totalCase}}
+              </ion-card-content>
+            </ion-header>
+            
+          </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin ion-text-center">
+
+          <ion-card class="ion-no-margin ion-padding" color="danger">
+            <ion-header>
+              <!-- <ion-icon name="search"></ion-icon> -->
+              <ion-card-subtitle>total Deaths</ion-card-subtitle>
+              <ion-card-content>
+                  {{totalDeaths}}
+              </ion-card-content></ion-header>
+            
+          </ion-card>
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row > 
+      <ion-item-divider>
+     
+      <ion-col class="ion-text-left">
+        TotalCases
+      </ion-col>
+       <ion-col class="ion-text-center">
+        {{isState?"State":"Country"}}
+      </ion-col>
+      <ion-col class="ion-text-right ">
+        Deaths
+      </ion-col>
+    </ion-item-divider>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-header>
+
+
+
+
+
+<ion-content>
+ 
+  <ion-grid>
+    
+   
+
+    <ion-row *ngFor="let data of loadedAllData" >
+      <ion-col class="ion-no-margin" >
+        <ion-list>
+          <ion-item  color="secondary" class="ion-no-margin" lines="none">
+           
+            <ion-label class="ion-margin" lines="none">
+          
+              <ion-row >
+                <ion-col class="ion-text-center">
+                  {{data.name}}
+                </ion-col>
+               
+
+
+
+              </ion-row>
+        
+              <!-- <ion-row class="ion-text-center">
+                <ion-col>
+                  Total Cases
+                </ion-col>
+                <ion-col>
+                  Deaths
+                </ion-col>
+              </ion-row> -->
+              <ion-row >
+                <ion-col class="ion-text-left">
+                  {{data.cases}}
+                </ion-col>
+                <ion-col class="ion-text-right">
+                  {{data.deaths}}
+                </ion-col>
+              </ion-row>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row> 
+
+
+
+<!-- 
+  
+    <ion-row   *ngFor="let data of loadedAllData" class="ion-text-center">
+        <ion-list>
+            <ion-item  color="yellow">
+        <ion-col size-sm="4">
+          {{data.cases}}
+        </ion-col>
+        <ion-col size-sm="4"> 
+            {{data.name}}
+          </ion-col>
+        <ion-col size-sm="4">
+          {{data.deaths}}
+        </ion-col>
+      </ion-item>
+    </ion-list>
+    </ion-row>
+
+
+
+  
+    <ion-row class="ion-text-center">
+     <ion-col>
+       <ion-item   lines="none" color="medium">fdfdsafdsfdsafdsafdsafdsf  sa</ion-item>
+     </ion-col>
+     <ion-col>
+        <ion-item    lines="none" color="medium">fdsa</ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item    lines="none" color="medium">fdsa</ion-item>
+        </ion-col>
+   </ion-row>
+
+
+ -->
+
+  </ion-grid>
+
+</ion-content>
